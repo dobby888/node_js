@@ -1,0 +1,20 @@
+{
+  "name": "node_js",
+  "version": "1.0.0",
+  "description": "complete node_js guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "app.js"
+  },
+  "author": "sree",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "node_js"
+  }
+}
