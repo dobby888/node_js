@@ -1,18 +1,11 @@
-const path = require("path");
 const express = require("express");
-const rootDir = require("../util/path");
+
+const productsController = require("../controllers/products");
 
 const router = express.Router();
 
-// Display the form
-router.get("/", (req, res, next) => {
-    res.sendFile(path.join(rootDir, "views", "contactus.html"));
-});
+router.get("/", productsController.getContact);
 
-// Handle the form submission
-router.post("/submit", (req, res, next) => {
-    // Handle the form data (for now, just redirect to success page)
-    res.redirect("/success");
-});
+router.post("/submit", productsController.getSuccess);
 
 module.exports = router;
