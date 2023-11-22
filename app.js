@@ -1,35 +1,27 @@
-const path = require("path");
+const path = require('path');
 
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const errorController = require('./controllers/error');
 
 const app = express();
 
-const adminRoute = require("./routes/admin");
-const shopRoute = require("./routes/shop");
-const contactUsRoute = require("./routes/contactus");
-const successRoute = require("./routes/success");
+app.set('view engine', 'ejs');
+app.set('views', 'views');
 
-const errorController=require("./controllers/error");
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Use the routes without a base path
-app.use('/admin',adminRoute);
-app.use(shopRoute);
-app.use("/contactUs",contactUsRoute)
-app.use('/success', successRoute);
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
 
-app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
-});
+app.use(errorController.get404);
 
-app.listen(8000)
-
-
- 
-
+app.listen(3000);
 //MVC:models views controller:
 //separation of concerns: different parts of our code do different things and making sure thatwe clearly know which part of the code is responsible forwhat
 // models: represent ur data in ur code, work with ur data(ex:save,fetch)
