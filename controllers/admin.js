@@ -42,17 +42,17 @@ exports.postEditProduct = (req, res, next) => {
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
   const updatedImageUrl = req.body.imageUrl;
-  const updatedDescription = req.body.description;
+  const updatedDesc = req.body.description;
   const updatedProduct = new Product(
     prodId,
     updatedTitle,
     updatedImageUrl,
-    updatedDescription,
+    updatedDesc,
     updatedPrice
   );
   updatedProduct.save();
-  res.redirect('/admin/products')
-}
+  res.redirect('/admin/products');
+};
 
 exports.getProducts = (req, res, next) => {
   Product.fetchAll(products => {
@@ -62,4 +62,10 @@ exports.getProducts = (req, res, next) => {
       path: '/admin/products'
     });
   });
+};
+
+exports.postDeleteProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  Product.deleteById(prodId);
+  res.redirect('/admin/products');
 };
