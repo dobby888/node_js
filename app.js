@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const errorController = require('./controllers/error');
-const db = require('./util/database');
+//const sequelize = require('./util/database');
 
 const app = express();
 
@@ -22,6 +22,14 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
+// sequelize
+//     .sync()
+//     .then(result => {
+//         console.log(result);
+//         app.listen(3000);
+//     })
+//     .catch(err => console.log(err));
+//sync:syncs ur model to the database by creating appropriate tables and relations(if we have) for them
 app.listen(3000);
 //MVC:models views controller:
 //separation of concerns: different parts of our code do different things and making sure thatwe clearly know which part of the code is responsible forwhat
