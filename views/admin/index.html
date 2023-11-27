@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <!-- You can include your custom CSS file here if needed -->
+</head>
+
+<body>
+
+    <form method="post" action="/user/add-user">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="userName" name="name" placeholder="Enter your name" required>
+        </div>
+        
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="userEmail" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="userPhone" name="phoneNum" placeholder="Enter your phone number" required>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- USER LIST STARTS HERE -->
+    <h3>User List</h3>
+    <ul id="userList"></ul>
+    <!-- USER LIST ENDS HERE -->
+
+    <!-- Include your JavaScript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
