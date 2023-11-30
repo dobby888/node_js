@@ -16,7 +16,7 @@ async function initiate(){
     try{
         await sequelize.sync();
         app.listen(8000,()=>{
-            console.log("Server started")
+            console.log("Server started");
         })
 
     }catch(err){

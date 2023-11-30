@@ -13,7 +13,7 @@ const userDetails = sequelize.define('userDetails',{
         type: Sequelize.STRING,
         allowNull :false
     },
-    emailId:{
+    emailId:{ 
         type: Sequelize.STRING,
         allowNull:false,
         unique:true

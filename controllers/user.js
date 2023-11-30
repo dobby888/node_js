@@ -43,11 +43,11 @@ exports.deleteuserDetails = async (request, response, next) => {
                 id: dID
             }
         });
-
+ 
         response.redirect('/user/appointments');
     } catch (err) {
         console.log("Error while deleting user Details with id: ", dID, err);
-    }
+    } 
 }
 
 exports.edituserDetails = async (request, response, next) => {

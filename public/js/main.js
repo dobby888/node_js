@@ -174,78 +174,68 @@
 
 
 
-
-
-
 const placeholder = document.getElementById('placeholder');
-const uName = document.getElementById('uName');
-const emailId = document.getElementById('emailId');
-const phoneNo = document.getElementById('phoneNo');
 
 placeholder.addEventListener('click', onClick);
 
 function showOutput(response) {
-  placeholder.innerHTML = '';
-  response.data.forEach((ele, index) => {
-    const listItem = document.createElement('li');
-    listItem.className = 'list-group-item';
+    placeholder.innerHTML = '';
+    response.data.forEach((ele, index) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'list-group-item';
 
-    listItem.innerHTML = `
-        <div class="index">${index + 1}</div>
-        <div class="uName">${ele.uName}</div>
-        <div class="emailId">${ele.emailId}</div>
-        <div class="phoneNo">${ele.phoneNo}</div>
-        <a href="/user/appointments/?id=${ele.id}&edit=true" class="btn btn-outline-success m-2 e-btn" data-id="${ele.id}">Edit</a>
-        <button class="btn btn-outline-danger del-btn" data-id="${ele.id}">Delete</button>
+        listItem.innerHTML = `
+            <div class="index">${index + 1}</div>
+            <div class="uName">${ele.uName}</div>
+            <div class="emailId">${ele.emailId}</div>
+            <div class="phoneNo">${ele.phoneNo}</div>
+            <a href="/user/appointments/?id=${ele.id}&edit=true" class="btn btn-outline-success m-2 e-btn" data-id="${ele.id}">Edit</a>
+            <button class="btn btn-outline-danger del-btn" data-id="${ele.id}">Delete</button>
         `;
 
-    placeholder.appendChild(listItem);
-  });
+        placeholder.appendChild(listItem);
+    });
 }
 
 async function onClick(e) {
-  e.preventDefault();
-  if (e.target && e.target.classList.contains('del-btn')) {
-    const dID = e.target.dataset.id;
-    try {
-      await axios.get(`http://localhost:8000/user/appointments/delete/${dID}`);
-      refresh();
-    } catch (err) {
-      console.log(err);
-    }
-  } else if (e.target && e.target.classList.contains('edit-btn')) {
     e.preventDefault();
-    const eID = e.target.getAttribute('data-id');
-    console.log("edit button clicked");
-    try {
-        const response = await axios.get(`http://localhost:8000/user/appointments/edit/${eID}`);
-        //console.log(response.data)
-        console.log('Edit Button Click Response:', response.data); 
-  
-        const { uName: userName, emailId: userEmail, phoneNo: userPhone } = response.data;
-        uName.innerHTML = userName;
-        emailId.innerHTML = userEmail;
-        phoneNo.innerHTML = userPhone;
-      await axios.get(`http://localhost:8000/user/appointments/delete/${eID}`);
-      refresh();
-    } catch (err) {
-        console.log('Error in Edit Button Click:', err); 
-      console.log(err);
+    if (e.target && e.target.classList.contains('del-btn')) {
+        const dID = e.target.dataset.id;
+        try {
+            await axios.get(`http://localhost:8000/user/appointments/delete/${dID}`);
+            refresh();
+        } catch (err) {
+            console.log(err);
+        }
+    } else if (e.target && e.target.classList.contains('e-btn')) {
+        e.preventDefault();
+        const eID = e.target.getAttribute('data-id');
+        console.log("edit button clicked");
+        try {
+            const response = await axios.get(`http://localhost:8000/user/appointments/edit/${eID}`);
+            console.log('Edit Button Click Response:', response.data);
+
+            // Assuming these are input elements, update them accordingly
+            document.getElementById('uName').value = response.data.uName;
+            document.getElementById('emailId').value = response.data.emailId;
+            document.getElementById('phoneNo').value = response.data.phoneNo;
+        
+            await axios.get(`http://localhost:8000/user/appointments/delete/${eID}`);
+             refresh();
+        } catch (err) {
+            console.log('Error in Edit Button Click:', err);
+            console.log(err);
+        }
     }
-  }
 }
 
 async function refresh() {
-  try {
-    const response = await axios.get('http://localhost:8000/user/appointments/data');
-    showOutput(response);
-  } catch (error) {
-    console.log(error);
-  }
+    try {
+        const response = await axios.get('http://localhost:8000/user/appointments/data');
+        showOutput(response);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 refresh();
-
-
-
-
