@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div>
+        <h1 class="text-center">Book an Appointment</h1>
+    </div>
+    <div>
+        <form method="post" action="/user/appointments">
+            <div>
+                <label for="uName">Name:</label>
+                <input type="text" id="uName" class="form-control" name="uName" placeholder="Enter your name" required>
+            </div>
+            <div>
+                <label for="emailId">Email:</label>
+                <input type="email" id="emailId" class="form-control" name="emailId" placeholder="Enter your email" required>
+            </div>
+            <div>
+                <label for="phoneNo">Phone Number:</label>
+                <input type="tel" id="phoneNo" class="form-control" name="phoneNo" placeholder="Enter your phone number" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" >Submit</button>
+        </form>
+        <h3>Appointment Details</h3>
+        <ul class="list-group" id="placeholder">
+            <!-- List items will be dynamically added here -->
+            <li class="list-group-item">
+                <div class="index">1</div>
+                <div class="uName">sree</div>
+                <div class="emailId">sree@gmail.com</div>
+                <div class="phoneNo">848337487483</div>
+                <a href="/user/appointments/?id=${ele.id}&edit=true" class="btn btn-outline-success m-2 e-btn" data-id="${ele.id}">Edit</a>
+                <button class="btn btn-outline-danger del-btn" data-id="${ele.id}">Delete</button>
+            </li>
+        </ul>
+    </div>
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.js"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>

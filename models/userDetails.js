@@ -19,7 +19,7 @@ const userDetails = sequelize.define('userDetails',{
         unique:true
     },
     phoneNo:{
-        type: Sequelize.STRING,
+        type: Sequelize.BIGINT,
         allowNull:false,
     }
 });
