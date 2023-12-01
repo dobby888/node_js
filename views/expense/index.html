@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/expense/style.css">
+</head>
+<body>
+    <div>
+        <h1 class="text-center">Track your Expenses</h1>
+    </div>
+    <div>
+        <form method="post" action="/user/expenses">
+            <!-- ... (unchanged) -->
+            <div>
+                <label for="expName">Expense name:</label>
+                <input type="text" id="expName" name="expName" placeholder="Enter expense name" required>
+            </div>
+            <div>
+                <label for="expCtgry">Choose_a_category:</label>
+                <select id="expCtgry" name="expCtgry" style="width: 100%; height: 30px;">
+                    <option value="education">Education</option>
+                    <option value="food">Food</option>
+                    <option value="medical">Medical</option>
+                    <option value="family">Family</option>
+                    <option value="rent">Rent</option>
+                    <option value="transport">Transport</option>
+                    <option value="entertainment">Entertainment</option>
+                </select><br><br>
+            </div>
+            <div>
+                <label for="expAmt">Expense amount:</label>
+                <input type="number" id="expAmt" name="expAmt" placeholder="Enter expense amount" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" >Submit</button>
+        </form>
+        <h3>Expense Details</h3>
+        <ul class="list-group" id="placeholder">
+            <!-- List items will be dynamically added here -->
+        </ul> 
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.js"></script>
+    <script src="/expense/main.js"></script>
+</body>
+</html>
