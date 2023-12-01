@@ -3,7 +3,7 @@ const userDetails = require('../models/userDetails');
 
 exports.getuserformPage = async (request, response, next) => {
     try {
-        response.sendFile('index.html', { root: 'views/user' });
+        await response.sendFile('index.html', { root: 'views/user' });
     } catch (err) {
         console.log("Error in getuserform page", err);
     }
