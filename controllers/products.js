@@ -24,11 +24,11 @@ exports.getProducts = (req, res, next) => {
     Product.fetchAll(products => {
         res.sendFile(path.join(rootDir, "views", "shop.html"))
     });
-};
+}; 
 
 exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId; 
-    Product.findById(prodId, product => {
+    Product.findByPk(prodId, product => {
         console.log(product)
         res.render('shop/product-detail', {
             product: product,
