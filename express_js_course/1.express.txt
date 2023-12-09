@@ -1,0 +1,11 @@
+server logic is complex
+to parse an incoming request:
+to extract an incoming body:manuallu start data event, end event and thats all only for the string data type/data so for other types such as files or some other we might need to write even more larger code
+
+focus on our core logic
+use framework for heavy lifting: helper funcitons, tools, rules help to build our application
+
+MIDDLEWARE: multiple piece of request
+
+request ---> middleware:(req,res,next){---next()} ---> middleware:(req,res,next){---res.send()} ---> response
+
