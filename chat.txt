@@ -1,0 +1,11 @@
+valli: hi dobby   
+dobby: hi valli   
+valli: how are u dobby   
+dobby: fine ,u?   
+valli: oh,im fine   
+valli: hi hari   
+dobby: hi sree   
+dobby: hi dobby   
+ammu: hi dobby   
+ammu: hi ammu   
+ammu: hi dobby   

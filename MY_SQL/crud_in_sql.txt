@@ -1,0 +1,158 @@
+1.Insert Operation
+        INSERT INTO:insert new records in a table.
+        
+        syntax:
+
+        i.Specify both the column names and the values to be inserted:
+        INSERT INTO table_name (column1, column2, column3, ...)
+        VALUES (value1, value2, value3, ...);
+
+        ii.values for all the columns-do not need to specify the column names-make sure the order of the values is in the same order as the columns in the table
+        INSERT INTO table_name
+        VALUES (value1, value2, value3, ...);
+        
+        ex:
+        INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+        VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+        Insert Data Only in Specified Columns:
+        ex:
+        INSERT INTO Customers (CustomerName, City, Country)
+        VALUES ('Cardinal', 'Stavanger', 'Norway');
+
+        Insert Multiple Rows:*(",")*
+        ex:
+        INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+        VALUES
+        ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway'),
+        ('Greasy Burger', 'Per Olsen', 'Gateveien 15', 'Sandnes', '4306', 'Norway'),
+        ('Tasty Tee', 'Finn Egan', 'Streetroad 19B', 'Liverpool', 'L1 0AA', 'UK');
+
+
+2.Null values:
+        NULL value is a field with no value.
+        =, <, or <>:not possible
+        use the IS NULL and IS NOT NULL
+
+        ex:IS NULL:used to test for empty values (NULL values)
+        NULL value in the "Address" field:
+        SELECT CustomerName, ContactName, Address
+        FROM Customers
+        WHERE Address IS NULL;
+
+        ex:IS NOT NULL:used to test for non-empty values (NOT NULL values)
+        value in the "Address" field
+        SELECT CustomerName, ContactName, Address
+        FROM Customers
+        WHERE Address IS NOT NULL;
+
+3.Update:modify the existing records in a table
+        syntax:
+        UPDATE table_name
+        SET column1 = value1, column2 = value2, ...
+        WHERE condition;
+                    ***Notice the WHERE clause in the UPDATE statement.***
+                    ***The WHERE clause specifies which record(s) that should be updated.***
+                    ***If you omit the WHERE clause, all records in the table will be updated!***
+        ex:updates the first customer (CustomerID = 1) with a new contact person and a new city
+        UPDATE Customers
+        SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+        WHERE CustomerID = 1;
+
+        UPDATE Multiple Records:WHERE clause that determines how many records will be updated.
+        ex:update the ContactName to "Juan" for all records where country is "Mexico":
+        UPDATE Customers
+        SET ContactName='Juan'
+        WHERE Country='Mexico';
+4.Delete:used to delete existing records in a table.
+
+        syntax:
+        DELETE FROM table_name WHERE condition;
+
+        ex:deletes the customer "Alfreds Futterkiste" from the "Customers" table:
+        DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+
+        Delete All Records:delete all rows in a table without deleting the table. This means that the table structure, attributes, and indexes will be intact:
+        DELETE FROM table_name;
+        deletes all rows in the "Customers" table, without deleting the table:
+        DELETE FROM Customers;
+
+5.In:allows you to specify multiple values in a WHERE clause,shorthand for multiple OR conditions.
+        Return all customers from 'Germany', 'France', or 'UK':
+        SELECT * FROM Customers
+        WHERE Country IN ('Germany', 'France', 'UK');
+
+        syntax:
+        SELECT column_name(s)
+        FROM table_name
+        WHERE column_name IN (value1, value2, ...);
+
+        NOT IN:return all records that are NOT any of the values in the list.
+
+        ex:NOT from 'Germany', 'France', or 'UK':
+        SELECT * FROM Customers
+        WHERE Country NOT IN ('Germany', 'France', 'UK');
+        total records:100
+        IN (SELECT):using IN with a subquery in the WHERE caluse:return all records from the main query that are present in the result of the subquery:
+        ex:all customers that have an order in the Orders table
+        SELECT * FROM Customers
+        WHERE CustomerID IN (SELECT CustomerID FROM Orders);=>returned records=25
+
+        NOT IN (SELECT):Return all customers that have NOT placed any orders in the Orders table:
+        ex:
+        SELECT * FROM Customers
+        WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);
+
+6.Like:used in a WHERE clause to search for a specified pattern in a column
+        two wildcards often used in conjunction with the LIKE operator:
+                percent sign % represents zero, one, or multiple characters
+                underscore sign _ represents one, single character
+        
+        syntax:
+        SELECT column1, column2, ...
+        FROM table_name
+        WHERE columnN LIKE pattern;
+
+        ex:starts with the letter "a"
+        SELECT * FROM Customers
+        WHERE CustomerName LIKE 'a%';
+
+        "_" wildcard:
+        ex:
+        all customers from a city that starts with 'L' followed by one wildcard character, then 'nd' and then two wildcard characters:
+        SELECT * FROM Customers
+        WHERE city LIKE 'L_nd__';
+
+        "%" wildcard:
+        ex:
+        all customers from a city that contains the letter 'L':
+        SELECT * FROM Customers
+        WHERE city LIKE '%L%';
+
+        starts with:"La":
+        SELECT * FROM Customers
+        WHERE CustomerName LIKE 'La%';
+
+        ends with:"a":
+        SELECT * FROM Customers
+        WHERE CustomerName LIKE '%a';
+
+        starts with "b" and ends with "s":
+        SELECT * FROM Customers
+        WHERE CustomerName LIKE 'b%s';
+
+        contains:
+        contains the phrase 'or'
+        SELECT * FROM Customers
+        WHERE CustomerName LIKE '%or%';
+
+        combine wildcards:
+        starts with "a" and are at least 3 characters in length:
+        SELECT * FROM Customers
+        WHERE CustomerName LIKE 'a__%';
+
+        without wildcard:phrase has to have an exact match to return a result:
+        ex:Return all customers from Spain:
+        SELECT * FROM Customers
+        WHERE Country LIKE 'Spain';
+

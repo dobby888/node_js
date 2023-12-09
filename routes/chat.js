@@ -7,7 +7,7 @@ router.get("/chat", (req, res, next) => {
     let setChat = fs.readFileSync('chat.txt','utf-8');
     
     if(setChat==''){
-        setChat = "No chat Here"
+        setChat = "No chat Here";
     }
         res.send(`<html lang="en">
         <head>

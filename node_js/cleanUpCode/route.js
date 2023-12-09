@@ -34,7 +34,7 @@ module.exports = reqHandler;
 
 //method.2:
 module.exports = {
-    handler: reqHandler;
+    handler: reqHandler,
 };
 
 // method.3:
