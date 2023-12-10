@@ -12,7 +12,7 @@ app.use('/add-product',(req, res, next) => {
     res.send(`<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add-Product</button></form>`);
     //now the above form returns a postmethod form to the /product route/middleware so we now have to handle that
 })
-
+ 
 //now the below middleware always execute always executes not only for post req but also for get req
 app.use('/product',  (req, res, next) => {
     //console.log(req.body);

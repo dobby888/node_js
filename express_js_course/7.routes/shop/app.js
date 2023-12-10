@@ -8,7 +8,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
+ 
 //now we can just use the import as a direct middleware
 app.use(adminRoutes);
 app.use(shopRoutes);

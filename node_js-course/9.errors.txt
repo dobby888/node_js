@@ -5,7 +5,7 @@ missing }
 runtime errors: 
 for ex: res.write inside a if block should end with return statement to stop the code execution after that line of code
 we'll get this error after loading the app
-
+ 
 logical errors: wont get the error message but the app doesnt run as required
 ex: storing the wrong variable=>use debugger
  

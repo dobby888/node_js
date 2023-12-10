@@ -37,7 +37,7 @@ const reqHandler = (req, res) => {
     res.write('</html>');
     res.end();
 }
-
+ 
 //model.1:
 //module.exports = reqHandler;
 

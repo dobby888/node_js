@@ -5,7 +5,7 @@ const app = express();
 //app.use([path],callback,[callback]....)//more than one callbacks
 
 //using '/' default below: but thi doesnt mean that the path has to be '/' but it means that the path has to start with '/'
-
+ 
 app.use('/',(req, res, next)=> {
     console.log("this always runs");
     next();

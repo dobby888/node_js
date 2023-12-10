@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
         res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></input></form></body>');
         res.write('</html>');
         return res.end();//returns from this anonymous funciton(or from the current loop) and stops executing the code at this point
-    } 
+    }  
     if (url === '/message' && method === 'POST') {//conditions must be same as the above form conditions if we want the page to be redirected to this
         fs.writeFileSync('message.txt', 'DUMMY');//path to the file,content of the file
         //fs.writeHead(302,{});//write some meta information in one go:302:redirection; {}: setting the header.........OR

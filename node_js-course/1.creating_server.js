@@ -4,7 +4,7 @@ const http = require('http');
 //input:paths to files(even our own files(starts with "/":absolute path or "./":relativepath=>looks in the same folder)) or any core modules
 //automaticaaly adds .js at the end
 //if no ./ or / at start it looks for a global module(even if we have a file with that name)
-
+ 
 // function reqListener(req,res) {
 // }
 

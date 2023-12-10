@@ -4,7 +4,7 @@ to extract an incoming body:manuallu start data event, end event and thats all o
 
 focus on our core logic
 use framework for heavy lifting: helper funcitons, tools, rules help to build our application
-
+ 
 MIDDLEWARE: multiple piece of request
 
 request ---> middleware:(req,res,next){---next()} ---> middleware:(req,res,next){---res.send()} ---> response

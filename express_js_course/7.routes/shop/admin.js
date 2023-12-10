@@ -6,7 +6,7 @@ const router = express.Router();
 //router.use works same as the app.use but just change the use to get so as to only allow the get req through the below middleware
 router.get('/add-product', (req, res, next) => {
     res.send(`<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add-Product</button></form>`);
-})
+}) 
 
 router.post('/product',  (req, res, next) => {
     console.log(JSON.stringify(req.body));

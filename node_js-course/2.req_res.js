@@ -12,7 +12,7 @@ const server=http.createServer((req, res) => {
     //Content-Type: default header type for the browser
     //text/html: attatches a header to our response where its type is set to html
 
-})
+}) 
   
 server.listen(3000);
 
