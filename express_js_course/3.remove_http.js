@@ -18,7 +18,7 @@ app.use((req, res, next) => {
     //....send the response: using express: send();=> we could end any type of response:ex: string, html, file...
     res.send(`<h1>hello from express!</h1>`);
 })
-
+ 
 // const server = http.createServer(app);
 // server.listen(3000);
 

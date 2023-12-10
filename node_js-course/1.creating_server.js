@@ -1,18 +1,17 @@
 const http = require('http');
 
-//require():imporrts files to the node.js
+//require():imports files to the node.js
 //input:paths to files(even our own files(starts with "/":absolute path or "./":relativepath=>looks in the same folder)) or any core modules
 //automaticaaly adds .js at the end
 //if no ./ or / at start it looks for a global module(even if we have a file with that name)
 
 // function reqListener(req,res) {
-
 // }
 
 // http.createServer(reqListener)
 
 //pass the reqListener reference to the createServer: execute the function for every incoming request
-
+ 
 //".":access methods or functions or properties related to that object in js
 
 //createServer: takes a requestLitener and returns an intance server

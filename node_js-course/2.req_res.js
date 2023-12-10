@@ -13,7 +13,7 @@ const server=http.createServer((req, res) => {
     //text/html: attatches a header to our response where its type is set to html
 
 })
- 
+  
 server.listen(3000);
 
 // url: /

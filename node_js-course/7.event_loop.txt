@@ -7,3 +7,4 @@ single js thread
 event loop:suppose the code has a line related to the "fs" which takes time: event loop only handles the code which could be executed immediately(ex:event callbacks) and for others long taking codes ex:"fs":creating a file......are sent to a worker pool which can handle some heavy lifting codes and it is detatched from the js code  
 event loop and water pool work on different threads
 water pool does the heavy lift work(file is creted/read) and when its done it will trigger  a callabck for that read file operation and since the event loop i responsible for that callbacks the event will end up in the event loop=> node.js execute the appropriate call back
+ 

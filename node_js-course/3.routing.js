@@ -9,15 +9,16 @@ const server = http.createServer((req, res) => {
         res.write('<head><title>Enter Message</title></head>');
         res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></input></form></body>');
         res.write('</html>');
-        return res.end();//returns from this anonymous funciton and stops executing the code at this point
-    }
-    if (url === '/message' && method === 'POST') {//coditions must be same as the above form conditions if we wnat the page to be redirected to this
+        return res.end();//returns from this anonymous funciton(or from the current loop) and stops executing the code at this point
+    } 
+    if (url === '/message' && method === 'POST') {//conditions must be same as the above form conditions if we want the page to be redirected to this
         fs.writeFileSync('message.txt', 'DUMMY');//path to the file,content of the file
         //fs.writeHead(302,{});//write some meta information in one go:302:redirection; {}: setting the header.........OR
         res.statusCode = 302;
         res.setHeader('Location', '/');//default header
         return res.end();
     }
+    //the below code will be executed only if the above loop conditions wont match at all as there is a return statement in both the loops
     res.setHeader('Content-Type', 'text/html');
     res.write('<html>');
     res.write('<head><title>My First page.</title></head>');

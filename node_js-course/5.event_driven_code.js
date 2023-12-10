@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
             console.log(chunk);
             body.push(chunk);
         });
-        req.on('end', () => {
+        req.on('end', () => { 
             const parsedBody = Buffer.concat(body).toString();
             const mesage = parsedBody.split('=')[1];
             fs.writeFileSync('message.txt', mesage);//thsi line will be executed after the response is sent.....so move the response inside the event listener

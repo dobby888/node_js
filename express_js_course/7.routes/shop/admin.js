@@ -15,3 +15,4 @@ router.post('/product',  (req, res, next) => {
 
 //export this code into the app.js file and we afgain have to import this there again
 module.exports = router;
+ 

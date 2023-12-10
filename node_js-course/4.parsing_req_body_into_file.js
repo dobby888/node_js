@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     if (url === '/message' && method === 'POST') {
         const body = [];
         req.on('data', (chunk) => {//data event will be triggered whenever a new chunk is ready to be read(uses Buffer event)
-            console.log(chunk);
+            console.log("chunk: "+chunk);//chunk will be the entered message from the input field
             body.push(chunk);
         });//event listener
         //'end' will be triggered as soon as it completes parsing the incoming data
@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
             //buffer is like a bus stop: now we convert the any type of input from the body into a string
             //creates a new buffer and concats all the chunks inside the body to it
             fs.writeFileSync('message.txt', mesage);//placing this below makes this line to execute after this funciton execution 
-        });
+        }); 
         res.statusCode = 302;
         res.setHeader('Location', '/');
         return res.end();

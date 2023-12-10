@@ -47,7 +47,7 @@ const reqHandler = (req, res) => {
 //     someText:"some hard coded text"
 // }
 
-//model.3:
+//model.3: 
 // module.exports.handler = reqHandler;
 // module.exports.someText = "some hard coded text";
 

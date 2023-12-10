@@ -8,3 +8,4 @@ we'll get this error after loading the app
 
 logical errors: wont get the error message but the app doesnt run as required
 ex: storing the wrong variable=>use debugger
+ 
