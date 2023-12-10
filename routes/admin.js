@@ -32,13 +32,15 @@ const path = require('path');
 
 const express = require('express');
 
+const rootDir = require('../util/path');
+
 const router = express.Router();
 
 //we can have the default url code like the url's which only starts with /admin shoul enter into the admin file not any eles: for that we might have to add the /admin in each of the route or we can directly use them in the middleware to filter the paths for that:
 //like: /admin/add-product
 router.get('/add-product', (req, res, next) => {
     //modify the post method also for add-product and make sure to add /admin at start
-    res.sendFile(path.join(__dirname,'../','views','add-product.html'))
+    res.sendFile(path.join(rootDir,'views','add-product.html'))
 }) 
 
 router.post('/add-product',  (req, res, next) => {
