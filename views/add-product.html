@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,6 +25,36 @@
                 <input type="text" name="title" id="title">
             </div>
             <button type="submit">Add product</button>
+        </form>
+    </main>
+</body>
+</html>  -->
+
+<!--learningcode: -->
+<!--nav:for navigation links(href) to different pages: to switch to shop.html page-->
+<!--views folder managaes the form or any thign that the viewer would see-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Shop</a></li>
+                <li><a href="/admin/add-product">Add Product</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <form action="/add-product" method="POST">
+            <input type="text" name="title">
+            <button type="submit">Add Product</button>
         </form>
     </main>
 </body>

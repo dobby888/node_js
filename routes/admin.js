@@ -27,6 +27,9 @@
 
 
 //learning code:
+
+const path = require('path');
+
 const express = require('express');
 
 const router = express.Router();
@@ -35,7 +38,7 @@ const router = express.Router();
 //like: /admin/add-product
 router.get('/add-product', (req, res, next) => {
     //modify the post method also for add-product and make sure to add /admin at start
-    res.send(`<form action="/admin/add-product" method="POST"><input type="text" name="title"><button type="submit">Add-Product</button></form>`);
+    res.sendFile(path.join(__dirname,'../','views','add-product.html'))
 }) 
 
 router.post('/add-product',  (req, res, next) => {
