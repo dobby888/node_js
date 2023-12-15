@@ -1,23 +1,25 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
-const app = express(); 
-
 const path = require('path');
+const userRoutes = require('./routes/user'); // Assuming your routes are in a file named user.js
 
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
+const app = express();
+const PORT = process.env.PORT || 8000;
 
-app.use(bodyParser.urlencoded({ extended: false }));
- 
-//now adding /admin here to only filter those url through the admin file
-app.use('/admin',adminRoutes);
-app.use(shopRoutes);
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-    console.log('404 error')
+// Routes
+app.use('/user/appointments', userRoutes);
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
 });
 
-app.listen(3000); 
-console.log("server is listening")
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

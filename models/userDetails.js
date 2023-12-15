@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../util/database');
-
 const userDetails = sequelize.define('userDetails',{
     id:{
         type:Sequelize.INTEGER,
